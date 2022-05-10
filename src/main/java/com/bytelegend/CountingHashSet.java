@@ -19,6 +19,7 @@ public class CountingHashSet extends HashSet<Object> {
 
     @Override
     public boolean addAll(Collection c) {
+        count += c.size();
         return super.addAll(c);
     }
 
