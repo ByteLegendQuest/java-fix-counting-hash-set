@@ -8,19 +8,31 @@ import java.util.HashSet;
  * `CountingHashSet` is a `HashSet` with all the features of `HashSet` plus the ability to count the
  * number of elements added since the creation of the instance.
  */
-public class CountingHashSet extends HashSet<Object> {
+public class CountingHashSet {
+    private static final HashSet<Object> HASHSET = new HashSet<>();
     private int count = 0;
 
-    @Override
-    public boolean add(Object obj) {
-        count++;
-        return super.add(obj);
+
+    public int size() {
+        return HASHSET.size();
     }
 
-    @Override
+    public boolean add(Object obj) {
+        count++;
+        return HASHSET.add(obj);
+    }
+
     public boolean addAll(Collection c) {
         count += c.size();
-        return super.addAll(c);
+        return HASHSET.addAll(c);
+    }
+
+    public boolean remove(Object o) {
+        return HASHSET.remove(o);
+    }
+
+    public boolean removeAll(Collection c) {
+        return HASHSET.removeAll(c);
     }
 
     public int getCount() {
