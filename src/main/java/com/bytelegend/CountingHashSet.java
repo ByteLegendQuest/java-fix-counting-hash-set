@@ -3,36 +3,24 @@ package com.bytelegend;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Set;
 
 /**
  * `CountingHashSet` is a `HashSet` with all the features of `HashSet` plus the ability to count the
  * number of elements added since the creation of the instance.
  */
-public class CountingHashSet {
+public class CountingHashSet extends HashSet<Object> {
     private int count = 0;
-    private Set<Object> set = new HashSet<>();
 
+    @Override
     public boolean add(Object obj) {
         count++;
-        return set.add(obj);
+        return super.add(obj);
     }
 
+    @Override
     public boolean addAll(Collection c) {
         count += c.size();
-        return set.addAll(c);
-    }
-
-    public boolean remove(Object obj) {
-        return set.remove(obj);
-    }
-
-    public int size() {
-        return set.size();
-    }
-
-    public boolean removeAll(Collection c) {
-        return set.removeAll(c);
+        return super.addAll(c);
     }
 
     public int getCount() {
