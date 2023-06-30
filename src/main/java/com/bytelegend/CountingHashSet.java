@@ -20,9 +20,11 @@ public class CountingHashSet extends HashSet<Object> {
     @Override
     public boolean addAll(Collection c) {
         boolean modified = false;
-        for (Object obj : c)
-            if (add(obj))
+        for (Object obj : c) {
+            if (add(obj)) {
                 modified = true;
+            }
+        }
         return modified;
     }
 
